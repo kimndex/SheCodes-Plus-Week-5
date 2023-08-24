@@ -57,3 +57,6 @@ div.container {
   background: #fff;
   cursor: pointer;
 }
+#footer {
+  padding-left: 80px;
+}
