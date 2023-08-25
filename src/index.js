@@ -14,6 +14,9 @@ function currentDate() {
   let day = days[now.getDay()];
 
   let hour = now.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
   let minutes = now.getMinutes();
   let minutesFormatted = (minutes < 10 ? "0" : "") + minutes;
   let today = document.querySelector("#date");
