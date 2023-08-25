@@ -56,18 +56,6 @@ function displayCountry(event) {
 
 searchCity.addEventListener("submit", displayCountry);
 
-//code temperature conversion between celcius and fahrenheit
-
-let Fahrenheit = document.querySelector("#degrees-fahrenheit");
-
-let celcius = document.querySelector("#degrees-celcius");
-function tempC(event) {
-  event.preventDefault();
-  let currentTemp = document.querySelector("#current-temp");
-  currentTemp.innerHTML = "<strong>11</strong>";
-}
-celcius.addEventListener("click", tempC);
-
 //code for the button using geolocation API
 let currentLocation = document.querySelector("#current-location");
 
@@ -101,11 +89,28 @@ function getCurrentPosition() {
 }
 
 currentLocation.addEventListener("click", getCurrentPosition);
+//code temperature conversion between celcius and fahrenheit
+
+let Fahrenheit = document.querySelector("#degrees-fahrenheit");
+let celcius = document.querySelector("#degrees-celcius");
+function tempC(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector("#current-temp");
+  currentTemp.innerHTML = Math.round(celciusTemp);
+  //removes working class from fahrenheit link
+  celcius.classList.add("working");
+  Fahrenheit.classList.remove("working");
+}
+celcius.addEventListener("click", tempC);
+
 function tempF(event) {
   event.preventDefault();
   let currentTemp = document.querySelector("#current-temp");
   let fahrenheitTemp = (celciusTemp * 9) / 5 + 32;
   currentTemp.innerHTML = Math.round(fahrenheitTemp);
+  //removes working class from celcius link
+  celcius.classList.remove("working");
+  Fahrenheit.classList.add("working");
 }
 Fahrenheit.addEventListener("click", tempF);
 let celciusTemp = null;

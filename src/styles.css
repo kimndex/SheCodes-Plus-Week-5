@@ -46,6 +46,11 @@ div.container {
 .emoji {
   font-size: 30px;
 }
+.working {
+  color: #000;
+  cursor: default;
+}
+
 #current-location {
   padding: 15px 25px;
   background: #83beec;
@@ -65,4 +70,10 @@ div.container {
 }
 #country {
   text-transform: capitalize;
+}
+#degrees-celcius {
+  text-decoration: none;
+}
+#degrees-fahrenheit {
+  text-decoration: none;
 }
