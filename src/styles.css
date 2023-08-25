@@ -60,3 +60,6 @@ div.container {
 #footer {
   padding-left: 80px;
 }
+#description {
+  text-transform: capitalize;
+}

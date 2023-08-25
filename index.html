@@ -30,13 +30,19 @@
           <h3>
             <span id="date">Friday</span>
             <br />
-            Mostly Sunny
+            <span id="description">Mostly Sunny</span>
           </h3>
         </div>
         <div class="col-6">
           <div class="current">
             <div class="currentTemp">
-              <span id="current-temp"> <strong>🌞11</strong></span
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+                alt="weather icon"
+                id="weather-icon"
+              />
+
+              <span id="current-temp"><strong>11</strong></span
               ><span class="degrees"
                 ><span>
                   <a href="#" id="degrees-celcius">°C</a> |
@@ -44,8 +50,8 @@
                 </span>
               </span>
             </div>
-            Precipitation: 1% <br />
-            Humidity: 79%
+            Humidity: <span id="humidity">79</span>% <br />
+            Wind Speed: <span id="wind-speed">7</span>km/hr
           </div>
         </div>
       </div>
