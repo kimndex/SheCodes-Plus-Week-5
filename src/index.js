@@ -42,7 +42,6 @@ function weather(response) {
   let windSpeed = document.querySelector("#wind-speed");
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
 }
-
 function displayCountry(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#search");
@@ -53,7 +52,6 @@ function displayCountry(event) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&units=metric`;
   axios.get(`${apiUrl}&key=${key}`).then(weather);
 }
-
 searchCity.addEventListener("submit", displayCountry);
 
 //code for the button using geolocation API
@@ -89,6 +87,8 @@ function getCurrentPosition() {
 }
 
 currentLocation.addEventListener("click", getCurrentPosition);
+getCurrentPosition();
+
 //code temperature conversion between celcius and fahrenheit
 
 let Fahrenheit = document.querySelector("#degrees-fahrenheit");
