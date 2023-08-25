@@ -30,7 +30,8 @@ let searchCity = document.querySelector("#search-form");
 let country = document.querySelector("#country");
 function weather(response) {
   let temperature = document.querySelector("#current-temp");
-  let theTemp = Math.round(response.data.temperature.current);
+  celciusTemp = response.data.temperature.current;
+  let theTemp = Math.round(celciusTemp);
   temperature.innerHTML = `${theTemp}`;
   let icon = document.querySelector("#weather-icon");
   icon.src = response.data.condition.icon_url;
@@ -58,17 +59,12 @@ searchCity.addEventListener("submit", displayCountry);
 //code temperature conversion between celcius and fahrenheit
 
 let Fahrenheit = document.querySelector("#degrees-fahrenheit");
-let currentTemp = document.querySelector("#current-temp");
-function tempF(event) {
-  event.preventDefault();
-  currentTemp.innerHTML = "<strong>🌞52</strong>";
-}
-Fahrenheit.addEventListener("click", tempF);
 
 let celcius = document.querySelector("#degrees-celcius");
 function tempC(event) {
   event.preventDefault();
-  currentTemp.innerHTML = "<strong>🌞11</strong>";
+  let currentTemp = document.querySelector("#current-temp");
+  currentTemp.innerHTML = "<strong>11</strong>";
 }
 celcius.addEventListener("click", tempC);
 
@@ -77,7 +73,9 @@ let currentLocation = document.querySelector("#current-location");
 
 function geoTemp(response) {
   let temperature = document.querySelector("#current-temp");
-  let theTemp = Math.round(response.data.temperature.current);
+  celciusTemp = response.data.temperature.current;
+
+  let theTemp = Math.round(celciusTemp);
   temperature.innerHTML = `${theTemp}`;
   let myLocation = document.querySelector("#country");
   myLocation.innerHTML = response.data.city;
@@ -103,3 +101,11 @@ function getCurrentPosition() {
 }
 
 currentLocation.addEventListener("click", getCurrentPosition);
+function tempF(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector("#current-temp");
+  let fahrenheitTemp = (celciusTemp * 9) / 5 + 32;
+  currentTemp.innerHTML = Math.round(fahrenheitTemp);
+}
+Fahrenheit.addEventListener("click", tempF);
+let celciusTemp = null;

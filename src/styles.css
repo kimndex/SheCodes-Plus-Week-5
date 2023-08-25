@@ -63,3 +63,6 @@ div.container {
 #description {
   text-transform: capitalize;
 }
+#country {
+  text-transform: capitalize;
+}
