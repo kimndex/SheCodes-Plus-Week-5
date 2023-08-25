@@ -19,15 +19,15 @@ div.container {
   );
   margin: 50px 70px;
   border: 1px solid grey;
-  max-width: 800px;
+  max-width: 700px;
   top: 50px;
 }
 .current {
   font-size: 25px;
 }
 .degrees {
-  position: fixed;
-  top: 145px;
+  position: relative;
+  top: -25px;
   font-size: 15px;
   font-weight: 500;
 }
