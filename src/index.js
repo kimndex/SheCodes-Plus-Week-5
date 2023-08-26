@@ -123,6 +123,51 @@ function getForecast(cityName) {
   axios.get(`${url}`).then(showForecast);
 }
 
-function showForecast(response) {
-  console.log(response.data.daily);
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  let day = days[date.getDay()];
+  return day;
 }
+
+function showForecast(response) {
+  let forecastSection = document.querySelector("#weather-forecast");
+  let forecastData = response.data.daily;
+
+  let forecastHTML = `<div class="row">`;
+
+  forecastData.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
+          <div class="col-2">
+            <div class="day">${formatDay(forecastDay.time)}</div>
+            <br />
+            <div>
+              <img
+                src="${forecastDay.condition.icon_url}"
+                alt="weather icon"
+                class="forecastIcon"
+              />
+            </div>
+            <br />
+            <span class="forecastMax"><strong>${Math.round(
+              forecastDay.temperature.maximum
+            )}°</strong></span>
+            <span class="forecastMin"> ${Math.round(
+              forecastDay.temperature.minimum
+            )}°</span>
+        </div>`;
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastSection.innerHTML = forecastHTML;
+}
+//displays current location forecast
+function harareForecast() {
+  let url = `https://api.shecodes.io/weather/v1/forecast?query=Harare&key=eb0aaf5ccaae9604a31eat3cfdo3faac&units=metric`;
+  axios.get(`${url}`).then(showForecast);
+}
+harareForecast();
