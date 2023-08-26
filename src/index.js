@@ -51,6 +51,7 @@ function displayCountry(event) {
   let key = "eb0aaf5ccaae9604a31eat3cfdo3faac";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&units=metric`;
   axios.get(`${apiUrl}&key=${key}`).then(weather);
+  getForecast(search.value);
 }
 searchCity.addEventListener("submit", displayCountry);
 
@@ -114,3 +115,14 @@ function tempF(event) {
 }
 Fahrenheit.addEventListener("click", tempF);
 let celciusTemp = null;
+
+//code for the forecast
+let forecast = document.querySelector("#weather-forecast");
+function getForecast(cityName) {
+  let url = `https://api.shecodes.io/weather/v1/forecast?query=${cityName}&key=eb0aaf5ccaae9604a31eat3cfdo3faac&units=metric`;
+  axios.get(`${url}`).then(showForecast);
+}
+
+function showForecast(response) {
+  console.log(response.data.daily);
+}
