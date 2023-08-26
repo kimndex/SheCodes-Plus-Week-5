@@ -43,7 +43,7 @@ div.container {
 .day {
   font-size: 30px;
 }
-.emoji {
+.forecastIcon {
   font-size: 30px;
 }
 .working {
@@ -76,4 +76,7 @@ div.container {
 }
 #degrees-fahrenheit {
   text-decoration: none;
+}
+#weather-forecast {
+  text-align: center;
 }
